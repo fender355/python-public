@@ -1,0 +1,100 @@
+Mula
+Import module 'pygame','sys','time','random'
+
+Setkan speed = 10
+
+Setkan frame_size_x = 1920 piksel
+Setkan frame_size_y = 1080 piksel
+
+Semak pepijat
+Jika ada pepijat
+  Papar "Error!", Semak pepijat
+Jika tidak
+  Paper "Game initialised successfully"
+  
+Setkan title window = "Snake Game"
+Setkan saiz window kepada frame_size_x * frame_size_y
+
+Setkan warna hitam = 0,0,0
+Setkan warna putih = 255,255,255
+Setkan warna merah = 255,0,0
+Setkan warna hijau = 0,255,0
+Setkan warna biru = 0,0,255
+
+Setkan FPS controller = pygame.time.Clock
+
+Setkan saiz ular = 60*60
+
+Isytiharkan posisi entity
+  Entity termasuk: Posisi kepala, Badan Ular, Posisi Makanan, Kemunculan Makanan, Sistem Markah, Arah
+  Setkan arah = kanan
+  Setkan Posisi kepala dan badan ular = 120, 60 (dimensi)
+  Setkan Posisi makanan = random
+  Setkan Kemunculan makanan = True
+Posisi entity tamat
+
+Mencipta Gameloop
+  Semasa True
+    Laksanakan Quit (pygame.QUIT)
+  Isytiharkan butang keyboard
+    Jika w ditekan
+      arah: atas
+    Jika s ditekan
+      arah: bawah
+    Jika a ditekan
+      arah: kiri
+    Jika s ditekan
+      arah: kanan
+      
+  Jika arah: atas
+    Posisi kepala: +1 (+y)
+  Jika arah: bawah
+    Posisi kepala: -1 (-y)
+  Jika arah: kiri
+    Posisi kepala: -0 (-x)
+  Jika tidak
+    Posisi kepala: +0 (+x)
+    
+  Jika posisi kepala: -0
+    Posisi kepala[0]: frame_size_x - saiz kepala
+  Jika posisi kepala: +0
+    Posisi kepala[0]: 0
+  Jika posisi kepala: -1
+    Posisi kepala[1]: frame_size_y - saiz kepala
+  Jika posisi kepala: +1
+    Posisi kepala[1]: 1
+    
+Ciptaan Gameloop Tamat
+
+Makan makanan
+Insert badan ular dan kepala ular
+Jika Posisi Kepala[0] = Posisi Makanan [0] DAN Posisi Kepala[1] = Posisi Makanan[1]
+  Setkan Kemunculan Makanan = False
+Jika tidak
+  Badan Ular status biasa
+Makan makanan Tamat
+
+Kemunculan Makanan
+Jika Kemunculan Makanan = False
+  Posisi makanan = random
+  Setkan Kemunculan Maknan = True
+Kemunculan Makanan Tamat
+
+Grafik
+Window game fill = hitam
+Untuk Posisi dalam Badan Ular
+  Lukis segi empat tepat, warna hijau
+    Isytiharkan posisi dan saiz ular kepada 2
+Lukis segi empat tepat, warna merah untuk Posisi Makanan
+Grafik Tamat
+
+Keadaan Gameover
+Untuk block dalam badan ular
+  Jika posisi kepala[0] = block[0] (Badan Ular x) DAN posisi kepala[1] = block[1] (Badan Ular y)
+    Data Posisi entity
+Keadaan Gameover Tamat
+
+Update resolusi display
+Update fps tick
+
+Tamat
